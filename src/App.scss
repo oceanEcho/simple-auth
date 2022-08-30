@@ -1,0 +1,42 @@
+:global {
+  :root {
+    --text-color-main: rgb(68, 69, 69);
+
+    --surface-color-main: #f4f5fa;
+
+    --gutter-s: 8px;
+    --gutter-m: 16px;
+    --gutter-l: 24px;
+
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --radius-l: 16px;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: var(--text-color-main);
+  }
+
+  #root {
+    height: 100%;
+  }
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #74ebd5;
+  background: linear-gradient(140deg, #74ebd5 0%, #9face6 100%);
+}

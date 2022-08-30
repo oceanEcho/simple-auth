@@ -9,7 +9,7 @@ export const RandomPicture = () => {
         width={320}
         height={280}
         className={styles.Image}
-        src="https://picsum.photos/320/280"
+        src="https://random.imagecdn.app/320/280"
         alt="Random picture"
       />
     </figure>

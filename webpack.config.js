@@ -38,7 +38,7 @@ module.exports = {
               importLoaders: 1,
               modules: {
                 localIdentName: isProduction
-                  ? "[hash:base64:5"
+                  ? "[hash:base64:5]"
                   : "[name]__[local]__[hash:base64:5]",
               },
             },

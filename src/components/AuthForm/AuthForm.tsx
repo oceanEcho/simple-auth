@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "../Button";
@@ -6,6 +6,7 @@ import { Input } from "../Input";
 import { Spinner } from "../Spinner";
 import { validateEmail } from "./utils/validateEmail";
 import { validatePassword } from "./utils/validatePassword";
+import { BAD_EMAIL, LOGIN_ERROR } from "./constants";
 
 import styles from "./AuthForm.scss";
 
@@ -14,7 +15,9 @@ export interface AuthFormValues {
   password: string;
 }
 
-export const AuthForm = () => {
+export const AuthForm: FC<{ setSigned: (signed: boolean) => void }> = ({
+  setSigned,
+}) => {
   const {
     handleSubmit,
     register,
@@ -26,12 +29,28 @@ export const AuthForm = () => {
     },
   });
 
-  const onSubmit = async (data: AuthFormValues) => {
-    await new Promise((resolve) => {
+  const [error, setError] = useState(false);
+
+  const onSubmit = (data: AuthFormValues) => {
+    setError(false);
+
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(data);
+        const shouldFail = data.email === BAD_EMAIL;
+
+        if (shouldFail) {
+          reject();
+        } else {
+          resolve(data);
+        }
       }, 3000);
-    });
+    })
+      .then(() => {
+        setSigned(true);
+      })
+      .catch(() => {
+        setError(true);
+      });
   };
 
   return (
@@ -55,6 +74,7 @@ export const AuthForm = () => {
           {...register("password", { validate: validatePassword })}
         />
       </div>
+      {error && <div className={styles.Error}>{LOGIN_ERROR}</div>}
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? <Spinner /> : <span>Sign in</span>}
       </Button>

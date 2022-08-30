@@ -19,3 +19,11 @@
   flex-direction: column;
   gap: var(--gutter-s);
 }
+
+.Error {
+  padding: var(--gutter-m);
+  background-color: var(--surface-color-error);
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}

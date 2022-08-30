@@ -1,0 +1,11 @@
+.Root {
+  margin: 0;
+  padding: var(--gutter-m);
+  background: var(--surface-color-primary);
+  box-shadow: 0px 0px 45px -4px rgba(0, 0, 0, 0.18);
+  border-radius: 16px;
+}
+
+.Image {
+  border-radius: 8px;
+}

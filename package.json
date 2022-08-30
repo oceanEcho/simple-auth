@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "start": "cross-env NODE_ENV=development webpack serve --open --mode development",
-    "build": "cross-env NODE_ENV=production webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "author": "Ivan Zaytsev",
   "license": "MIT",

@@ -42,7 +42,11 @@ export const Input: FC<InputProps & { ref?: Ref<HTMLInputElement> }> =
             ref={ref}
             {...props}
           />
-          {error && <span className={styles.ErrorMessage}>{error}</span>}
+          {error && (
+            <span role="alert" className={styles.ErrorMessage}>
+              {error}
+            </span>
+          )}
         </div>
       );
     }

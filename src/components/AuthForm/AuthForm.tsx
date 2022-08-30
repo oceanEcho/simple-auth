@@ -74,7 +74,11 @@ export const AuthForm: FC<{ setSigned: (signed: boolean) => void }> = ({
           {...register("password", { validate: validatePassword })}
         />
       </div>
-      {error && <div className={styles.Error}>{LOGIN_ERROR}</div>}
+      {error && (
+        <div role="alert" className={styles.Error}>
+          {LOGIN_ERROR}
+        </div>
+      )}
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? <Spinner /> : <span>Sign in</span>}
       </Button>

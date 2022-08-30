@@ -2,6 +2,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
 const styleLoader = isProduction ? MiniCssExtractPlugin.loader : "style-loader";
@@ -38,7 +39,7 @@ module.exports = {
               modules: {
                 localIdentName: isProduction
                   ? "[hash:base64:5"
-                  : "[local]__[hash:base64:5]",
+                  : "[name]__[local]__[hash:base64:5]",
               },
             },
           },
@@ -51,6 +52,14 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "static"),
+          to: path.resolve(__dirname, "dist"),
+        },
+      ],
     }),
   ],
   devServer: {

@@ -22,7 +22,7 @@ $ npm start
 
 ## Build
 
-For develop build use this
+For development build use this
 
 ```
 $ npm run dev
